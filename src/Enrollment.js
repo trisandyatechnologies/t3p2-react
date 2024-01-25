@@ -20,7 +20,11 @@ export default function Enrollment() {
   };
 
   useEffect(() => {
-    alert("New Record Added");
+    console.log("New Record Added");
+
+    return () => {
+      console.log("Component unmounted");
+    };
   }, [list]);
 
   return (
@@ -50,13 +54,20 @@ export default function Enrollment() {
         </thead>
         <tbody>
           {list.map((record) => (
-            <tr>
-              <td>{record.id}</td>
-              <td>{record.name}</td>
-            </tr>
+            <ListRow key={record.id} {...record} />
           ))}
         </tbody>
       </table>
     </div>
+  );
+}
+
+function ListRow(props) {
+  const { id, name } = props;
+  return (
+    <tr>
+      <td>{id}</td>
+      <td>{name}</td>
+    </tr>
   );
 }

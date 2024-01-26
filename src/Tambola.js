@@ -1,3 +1,4 @@
+import { Button, Divider, Paper, Typography } from "@mui/material";
 import { createContext, useContext, useState } from "react";
 
 const defaultStyles = {
@@ -13,7 +14,7 @@ export default function Tambola() {
   const [selected, setSelected] = useState([]);
 
   return (
-    <div style={{ padding: 16 }}>
+    <Paper style={{ padding: 16, margin: 8 }}>
       <h2>Tambola</h2>
       <div
         style={{
@@ -24,15 +25,16 @@ export default function Tambola() {
         }}
       >
         {[...new Array(99)].map((_, i) => (
-          <button
+          <Button
             style={{ minWidth: 40 }}
             onClick={() => setSelected([...selected, i + 1])}
+            variant="outlined"
           >
             {i + 1}
-          </button>
+          </Button>
         ))}
       </div>
-      <hr />
+      <Divider style={{ marginTop: 16, marginBottom: 16 }} />
       <TambolaContext.Provider value={{ selected }}>
         <ThemeContext.Provider
           value={{
@@ -76,7 +78,7 @@ export default function Tambola() {
           </div>
         </ThemeContext.Provider>
       </TambolaContext.Provider>
-    </div>
+    </Paper>
   );
 }
 
@@ -84,13 +86,13 @@ function Player(props) {
   const { cardStyles, gridStyles, buttonStyles } = useContext(ThemeContext);
   const { selected } = useContext(TambolaContext);
   return (
-    <div style={cardStyles}>
-      <h3>
+    <Paper style={cardStyles} elevation={1}>
+      <Typography variant="h4">
         Player <span style={{ textDecoration: "underline" }}>{props.name}</span>
-      </h3>
+      </Typography>
       <div style={gridStyles}>
         {[...new Array(15)].map((_, i) => (
-          <button style={buttonStyles}>
+          <Button variant="contained" style={buttonStyles}>
             <span
               style={{
                 textDecoration: selected.includes(i + 1)
@@ -100,9 +102,9 @@ function Player(props) {
             >
               {i + 1}
             </span>
-          </button>
+          </Button>
         ))}
       </div>
-    </div>
+    </Paper>
   );
 }

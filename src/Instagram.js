@@ -16,10 +16,13 @@ import MailIcon from "@mui/icons-material/Mail";
 import { Grid } from "@mui/material";
 import RightSidebar from "./instagram/RightSidebar";
 import Post from "./instagram/Post";
+import Login from "./instagram/Login";
+import { useUserStore } from "./instagram/store";
 
 const drawerWidth = 240;
 
 export default function Instagram() {
+  const email = useUserStore((s) => s.email);
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -37,7 +40,11 @@ export default function Instagram() {
         anchor="left"
       >
         <Toolbar>
-          <Typography variant="h5">Instagram</Typography>
+          <Typography variant="h5">
+            Instagram {email && <span> ({email.split("@")[0]})</span>}
+          </Typography>
+
+          {!email && <Login />}
         </Toolbar>
         <Divider />
         <List>

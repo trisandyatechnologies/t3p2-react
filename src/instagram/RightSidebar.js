@@ -7,8 +7,10 @@ import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import { ListSubheader } from "@mui/material";
+import { useUserStore } from "./store";
 
 export default function RightSidebar() {
+  const email = useUserStore((s) => s.email);
   return (
     <List sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
       <ListItem alignItems="flex-start">
@@ -19,7 +21,7 @@ export default function RightSidebar() {
           />
         </ListItemAvatar>
         <ListItemText
-          primary="Brunch this weekend?"
+          primary={email}
           secondary={
             <React.Fragment>
               <Typography

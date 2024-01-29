@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react";
+import { useUserStore } from "./instagram/store";
 
 const lightTheme = {
   id: "light",
@@ -16,6 +17,7 @@ const ThemeContext = createContext(lightTheme);
 
 export default function Theming() {
   const [theme, setTheme] = useState(lightTheme);
+  const email = useUserStore((s) => s.email);
   return (
     <ThemeContext.Provider>
       <div>
@@ -32,6 +34,7 @@ export default function Theming() {
             }
           >
             {theme.id === "light" ? "Dark" : "Light"}
+            <span>{email}</span>
           </button>
           <Header />
           <Content />

@@ -14,6 +14,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import { useUserStore } from "./store";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -28,6 +29,7 @@ const ExpandMore = styled((props) => {
 
 export default function Post() {
   const [expanded, setExpanded] = React.useState(false);
+  const email = useUserStore((s) => s.email);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -46,7 +48,7 @@ export default function Post() {
             <MoreVertIcon />
           </IconButton>
         }
-        title="Shrimp and Chorizo Paella"
+        title={email ?? "Login"}
         subheader="September 14, 2016"
       />
       <CardMedia

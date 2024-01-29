@@ -19,8 +19,8 @@ function App() {
         {/* <Enrollment /> */}
         {/* <Tabs /> */}
         {/* <Tambola /> */}
-        {/* <Instagram /> */}
-        {<Theming />}
+        <Instagram />
+        <Theming />
       </div>
     </ThemeProvider>
   );

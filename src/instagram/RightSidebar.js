@@ -8,6 +8,7 @@ import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import { ListSubheader } from "@mui/material";
 import { useUserStore } from "./store";
+import { Link } from "react-router-dom";
 
 export default function RightSidebar() {
   const email = useUserStore((s) => s.email);
@@ -30,7 +31,7 @@ export default function RightSidebar() {
                 variant="body2"
                 color="text.primary"
               >
-                Ali Connors
+                <Link to="/profile/Ali_Connors">Ali Connors</Link>
               </Typography>
               {" — I'll be in your neighborhood doing errands this…"}
             </React.Fragment>
@@ -52,7 +53,7 @@ export default function RightSidebar() {
                 variant="body2"
                 color="text.primary"
               >
-                Ali Connors
+                <Link to="/profile/Jhansi?color=green">Jhansi</Link>
               </Typography>
               {" — I'll be in your neighborhood doing errands this…"}
             </React.Fragment>
@@ -74,7 +75,7 @@ export default function RightSidebar() {
                 variant="body2"
                 color="text.primary"
               >
-                to Scott, Alex, Jennifer
+                <Link to="/profile/Sai?color=red">Sai</Link>
               </Typography>
               {" — Wish I could come, but I'm out of town this…"}
             </React.Fragment>

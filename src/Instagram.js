@@ -18,6 +18,17 @@ import RightSidebar from "./instagram/RightSidebar";
 import Post from "./instagram/Post";
 import Login from "./instagram/Login";
 import { useUserStore } from "./instagram/store";
+import { Link, Route, Routes } from "react-router-dom";
+import Home from "./instagram/Home";
+import Profile from "./instagram/Profile";
+import {
+  HomeMaxOutlined,
+  HouseOutlined,
+  Person2Outlined,
+} from "@mui/icons-material";
+import Theming from "./Theming";
+import Counter from "./Counter";
+import Enrollment from "./Enrollment";
 
 const drawerWidth = 240;
 
@@ -48,55 +59,82 @@ export default function Instagram() {
         </Toolbar>
         <Divider />
         <List>
-          {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-            <ListItem key={text} disablePadding>
+          <Link to="/">
+            <ListItem disablePadding>
               <ListItemButton>
                 <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  <HouseOutlined />
                 </ListItemIcon>
-                <ListItemText primary={text} />
+                <ListItemText primary="Home" />
               </ListItemButton>
             </ListItem>
-          ))}
+          </Link>
+          <Link to="/profile">
+            <ListItem disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  <Person2Outlined />
+                </ListItemIcon>
+                <ListItemText primary="Profile" />
+              </ListItemButton>
+            </ListItem>
+          </Link>
         </List>
         <Divider />
         <List>
-          {["All mail", "Trash", "Spam"].map((text, index) => (
-            <ListItem key={text} disablePadding>
+          <Link to="/counter">
+            <ListItem disablePadding>
               <ListItemButton>
                 <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  <Person2Outlined />
                 </ListItemIcon>
-                <ListItemText primary={text} />
+                <ListItemText primary="Counter" />
               </ListItemButton>
             </ListItem>
-          ))}
+          </Link>
+          <Link to="/login">
+            <ListItem disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  <Person2Outlined />
+                </ListItemIcon>
+                <ListItemText primary="Login" />
+              </ListItemButton>
+            </ListItem>
+          </Link>
+          <Link to="/theming">
+            <ListItem disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  <Person2Outlined />
+                </ListItemIcon>
+                <ListItemText primary="Theming" />
+              </ListItemButton>
+            </ListItem>
+          </Link>
+          <Link to="/enrollment">
+            <ListItem disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  <Person2Outlined />
+                </ListItemIcon>
+                <ListItemText primary="Enrollment" />
+              </ListItemButton>
+            </ListItem>
+          </Link>
         </List>
       </Drawer>
       <Box
         component="main"
         sx={{ flexGrow: 1, bgcolor: "background.default", p: 3, width: "100%" }}
       >
-        <Grid container>
-          <Grid item xs={12} md={7}>
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                gap: 2,
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              {[...new Array(3)].map((_, i) => (
-                <Post key={i} />
-              ))}
-            </Box>
-          </Grid>
-          <Grid item xs={12} md={5}>
-            <RightSidebar />
-          </Grid>
-        </Grid>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/profile/:user" element={<Profile />} />
+          <Route path="/theming" element={<Theming />} />
+          <Route path="/counter" element={<Counter />} />
+          <Route path="/enrollment" element={<Enrollment />} />
+        </Routes>
       </Box>
     </Box>
   );

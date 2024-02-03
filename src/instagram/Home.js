@@ -1,8 +1,10 @@
 import { Box, Grid } from "@mui/material";
 import Post from "./Post";
 import RightSidebar from "./RightSidebar";
+import { usePostStore } from "./store";
 
 export default function Home() {
+  const posts = usePostStore((s) => s.posts);
   return (
     <Grid container>
       <Grid item xs={12} md={7}>
@@ -15,8 +17,8 @@ export default function Home() {
             alignItems: "center",
           }}
         >
-          {[...new Array(3)].map((_, i) => (
-            <Post key={i} />
+          {posts.map((postData, i) => (
+            <Post key={i} {...postData} />
           ))}
         </Box>
       </Grid>

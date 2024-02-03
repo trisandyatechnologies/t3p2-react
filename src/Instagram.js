@@ -29,6 +29,7 @@ import {
 import Theming from "./Theming";
 import Counter from "./Counter";
 import Enrollment from "./Enrollment";
+import NewPost from "./instagram/NewPost";
 
 const drawerWidth = 240;
 
@@ -92,13 +93,13 @@ export default function Instagram() {
               </ListItemButton>
             </ListItem>
           </Link>
-          <Link to="/login">
+          <Link to="/new">
             <ListItem disablePadding>
               <ListItemButton>
                 <ListItemIcon>
                   <Person2Outlined />
                 </ListItemIcon>
-                <ListItemText primary="Login" />
+                <ListItemText primary="New Post" />
               </ListItemButton>
             </ListItem>
           </Link>
@@ -130,6 +131,7 @@ export default function Instagram() {
       >
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/new" element={<NewPost />} />
           <Route path="/profile/:user" element={<Profile />} />
           <Route path="/theming" element={<Theming />} />
           <Route path="/counter" element={<Counter />} />

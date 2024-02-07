@@ -30,6 +30,7 @@ import Theming from "./Theming";
 import Counter from "./Counter";
 import Enrollment from "./Enrollment";
 import NewPost from "./instagram/NewPost";
+import States from "./States";
 
 const drawerWidth = 240;
 
@@ -123,6 +124,16 @@ export default function Instagram() {
               </ListItemButton>
             </ListItem>
           </Link>
+          <Link to="/states">
+            <ListItem disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  <Person2Outlined />
+                </ListItemIcon>
+                <ListItemText primary="States" />
+              </ListItemButton>
+            </ListItem>
+          </Link>
         </List>
       </Drawer>
       <Box
@@ -136,6 +147,7 @@ export default function Instagram() {
           <Route path="/theming" element={<Theming />} />
           <Route path="/counter" element={<Counter />} />
           <Route path="/enrollment" element={<Enrollment />} />
+          <Route path="/states" element={<States />} />
         </Routes>
       </Box>
     </Box>
